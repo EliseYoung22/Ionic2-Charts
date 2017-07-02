@@ -1,12 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
+import {D3Page} from '../d3/d3';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+   D3Page = D3Page;
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -18,7 +20,7 @@ export class HomePage {
   lineChart: any;
 
   constructor(public navCtrl: NavController) {
-
+     
   }
 
   ionViewDidLoad() {
