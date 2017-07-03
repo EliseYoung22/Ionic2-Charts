@@ -206,6 +206,7 @@ export class HomePage {
 
     this.radarChart = new Chart(this.radarCanvas.nativeElement, {
         type: 'radar',
+        radius: 10, 
         data: {
                 labels: ["Discover", "Share", "Act"],
                 datasets: [{
@@ -240,13 +241,16 @@ export class HomePage {
                     data: [90, 78, 81],
                     backgroundColor: [
                         // 'rgba(255, 99, 132, 0.2)',
-                        // 'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+
                         // 'rgba(255, 206, 86, 0.2)',
                         // 'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        // 'rgba(255, 159, 64, 0.2)'
+                        // 'rgba(153, 102, 255, 0.4)',
+                        // 'rgba(153, 102, 255, 0.4)',
+                        // 'rgba(153, 102, 255, 0.4)',
+                        // 'rgba(255, 159, 64, 0.2)',
                     ],
                     hoverBackgroundColor: [
                         // "#FF6384",
@@ -256,7 +260,8 @@ export class HomePage {
                         "#36A2EB",
                         "#36A2EB",
                         "#36A2EB",
-                        // "#FF9B00"
+                        // "#FF9B00",
+        
                     ]
                 }], 
             },
@@ -267,7 +272,9 @@ export class HomePage {
                     fontSize: 20
                 }
             },
-            tension: 30   
+            tension: 30,
+            fontSize: 30,
+            bezierCurve: true,
         },
     });
   }
