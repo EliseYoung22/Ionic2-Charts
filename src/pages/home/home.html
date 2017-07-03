@@ -3,8 +3,8 @@
     <ion-title>
       Charts Are Fun!
     </ion-title>
-    <button [navPush]="D3Page">Go To D3</button>
-    <button> hi </button>
+    <button [navPush]="D3Page">Go To D3 Pie</button>
+
   </ion-navbar>
 </ion-header>
 
@@ -12,7 +12,7 @@
   
   <ion-card>
     <ion-card-header>
-      Bar Charts
+      Let's hit the bar!
     </ion-card-header>
     <ion-card-content>
       <canvas #barCanvas></canvas>
@@ -21,7 +21,7 @@
 
   <ion-card>
     <ion-card-content>
-      Doughnut Chart
+      Mmmmm Doughnuts 
     </ion-card-content>
     <ion-card-content>
       <canvas #doughnutCanvas></canvas>
@@ -30,10 +30,28 @@
 
   <ion-card>
     <ion-card-header>
-      Line Chart
+      Lines of code
     </ion-card-header>
     <ion-card-content>
       <canvas #lineCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+ <ion-card>
+    <ion-card-header>
+      Lines of code
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #polarAreaCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+   <ion-card>
+    <ion-card-header>
+      Lines of code
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #radarCanvas></canvas>
     </ion-card-content>
   </ion-card>
 </ion-content>
