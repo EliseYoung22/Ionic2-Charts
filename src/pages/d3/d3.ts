@@ -13,7 +13,7 @@ import * as d3Shape from "d3-shape";
   templateUrl: 'd3.html',
 })
 export class D3Page {
-   title: string = 'D3.js with Ionic 2!';
+   title: string = 'Have some pie!';
 
   margin = {top: 20, right: 20, bottom: 30, left: 50};
   width: number;

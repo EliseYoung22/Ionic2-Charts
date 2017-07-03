@@ -9,11 +9,13 @@ import { HomePage } from '../pages/home/home';
 import { D3Page } from '../pages/d3/d3';
 
 
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     D3Page,
+
   ],
   imports: [
     BrowserModule,
@@ -24,6 +26,7 @@ import { D3Page } from '../pages/d3/d3';
     MyApp,
     HomePage, 
     D3Page,
+
   ],
   providers: [
     StatusBar,
