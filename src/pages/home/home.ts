@@ -2,6 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import {D3Page} from '../d3/d3';
+import {HeatmapPage} from '../heatmap/heatmap';
+
 
 
 @Component({
@@ -10,6 +12,7 @@ import {D3Page} from '../d3/d3';
 })
 export class HomePage {
    D3Page = D3Page;
+   HeatmapPage = HeatmapPage;
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -206,7 +209,6 @@ export class HomePage {
 
     this.radarChart = new Chart(this.radarCanvas.nativeElement, {
         type: 'radar',
-        radius: 10, 
         data: {
                 labels: ["Discover", "Share", "Act"],
                 datasets: [{
@@ -217,22 +219,12 @@ export class HomePage {
                         'rgba(255, 99, 132, 0.4)',
                         'rgba(255, 99, 132, 0.4)',
                         'rgba(255, 99, 132, 0.4)',
-        
-                        // 'rgba(54, 162, 235, 0.2)',
-                        // 'rgba(255, 206, 86, 0.2)',
-                        // 'rgba(75, 192, 192, 0.2)',
-                        // 'rgba(153, 102, 255, 0.2)',
-                        // 'rgba(255, 159, 64, 0.2)'
+
                     ],
                     hoverBackgroundColor: [
                         "#FF6384",
                         "#FF6384",
                         "#FF6384",
-                        // "#36A2EB",
-                        // "#FFCE56",
-                        // "#FF6384",
-                        // "#36A2EB",
-                        // "#FFCE56"
                     ]
                 },
                 {
@@ -244,23 +236,11 @@ export class HomePage {
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
-
-                        // 'rgba(255, 206, 86, 0.2)',
-                        // 'rgba(75, 192, 192, 0.2)',
-                        // 'rgba(153, 102, 255, 0.4)',
-                        // 'rgba(153, 102, 255, 0.4)',
-                        // 'rgba(153, 102, 255, 0.4)',
-                        // 'rgba(255, 159, 64, 0.2)',
                     ],
                     hoverBackgroundColor: [
-                        // "#FF6384",
-                        // "#36A2EB",
-                        // "#FFCE56",
-                        // "#FF6384",
                         "#36A2EB",
                         "#36A2EB",
                         "#36A2EB",
-                        // "#FF9B00",
         
                     ]
                 }], 
@@ -268,7 +248,6 @@ export class HomePage {
         options: {
             legend: {
                 labels: {
-                    // This more specific font property overrides the global property
                     fontSize: 20
                 }
             },

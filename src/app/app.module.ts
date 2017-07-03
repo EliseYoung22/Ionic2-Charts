@@ -7,6 +7,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { D3Page } from '../pages/d3/d3';
+import { HeatmapPage } from '../pages/heatmap/heatmap';
+
+import { ChartModule } from 'angular2-highcharts';
+import * as highcharts from 'Highcharts';
 
 
 
@@ -15,17 +19,19 @@ import { D3Page } from '../pages/d3/d3';
     MyApp,
     HomePage,
     D3Page,
+    HeatmapPage,
 
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp), ChartModule.forRoot(highcharts)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage, 
     D3Page,
+    HeatmapPage,
 
   ],
   providers: [

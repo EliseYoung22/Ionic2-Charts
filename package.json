@@ -25,6 +25,7 @@
         "@ionic-native/status-bar": "3.12.1",
         "@ionic/storage": "2.0.1",
         "@types/d3": "^4.9.0",
+        "angular2-highcharts": "^0.5.5",
         "chart.js": "^2.6.0",
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
