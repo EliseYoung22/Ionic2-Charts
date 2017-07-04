@@ -5,7 +5,9 @@ import {D3Page} from '../d3/d3';
 import {HeatmapPage} from '../heatmap/heatmap';
 import {StatsPage} from '../stats/stats';
 
+import { GithubServiceProvider } from '../../providers/github-service/github-service';
 
+import { User } from '../../models/user';
 
 
 @Component({
@@ -16,6 +18,8 @@ export class HomePage {
    D3Page = D3Page;
    HeatmapPage = HeatmapPage;
    StatsPage = StatsPage;
+   user: User[];
+   login: string;
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
@@ -32,9 +36,23 @@ export class HomePage {
   radarChart: any;
   halfdoughnutChart: any;
 
-  constructor(public navCtrl: NavController) {  
+  constructor(private githubServiceProvider: GithubServiceProvider, navCtrl: NavController) {  
+    githubServiceProvider.load().subscribe(user => {
+        this.user = user;
+        console.log(user);
+    })
+    // githubServiceProvider.loadDetails().subscribe(user => {
+    //   this.user = user;
+    //   console.log(user); 
+    // })
   }
 
+    // getFollowers(){
+    //     this.githubService.getFollowers().subscribe(user => {
+    //         this.user = user;
+    //         console.log(user); 
+    //     });
+    // }
   ionViewDidLoad() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
