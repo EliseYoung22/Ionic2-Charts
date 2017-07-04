@@ -8,6 +8,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { D3Page } from '../pages/d3/d3';
 import { HeatmapPage } from '../pages/heatmap/heatmap';
+import { StatsPage } from '../pages/stats/stats';
+
 
 import { ChartModule } from 'angular2-highcharts';
 import * as highcharts from 'Highcharts';
@@ -20,7 +22,7 @@ import * as highcharts from 'Highcharts';
     HomePage,
     D3Page,
     HeatmapPage,
-
+    StatsPage,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +34,7 @@ import * as highcharts from 'Highcharts';
     HomePage, 
     D3Page,
     HeatmapPage,
-
+    StatsPage,
   ],
   providers: [
     StatusBar,

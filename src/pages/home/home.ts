@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 import { Chart } from 'chart.js';
 import {D3Page} from '../d3/d3';
 import {HeatmapPage} from '../heatmap/heatmap';
+import {StatsPage} from '../stats/stats';
+
 
 
 
@@ -13,12 +15,14 @@ import {HeatmapPage} from '../heatmap/heatmap';
 export class HomePage {
    D3Page = D3Page;
    HeatmapPage = HeatmapPage;
+   StatsPage = StatsPage;
 
   @ViewChild('barCanvas') barCanvas;
   @ViewChild('doughnutCanvas') doughnutCanvas;
   @ViewChild('lineCanvas')lineCanvas;
   @ViewChild('polarAreaCanvas')polarAreaCanvas;
   @ViewChild('radarCanvas')radarCanvas;
+  @ViewChild('halfdoughnutCanvas')halfdoughnutCanvas;
 
 
   barChart: any;
@@ -26,6 +30,7 @@ export class HomePage {
   lineChart: any;
   polarAreaChart: any;
   radarChart: any;
+  halfdoughnutChart: any;
 
   constructor(public navCtrl: NavController) {  
   }
@@ -232,7 +237,6 @@ export class HomePage {
                     lineTension: 0.3,
                     data: [90, 78, 81],
                     backgroundColor: [
-                        // 'rgba(255, 99, 132, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(54, 162, 235, 0.2)',
@@ -251,10 +255,39 @@ export class HomePage {
                     fontSize: 20
                 }
             },
-            tension: 30,
-            fontSize: 30,
-            bezierCurve: true,
         },
+    });
+
+     this.halfdoughnutChart = new Chart(this.halfdoughnutCanvas.nativeElement, {
+      type: 'doughnut',
+        data: {
+            labels: ["Discover", "Share", "Act"],
+            datasets: [{
+                label: '%',
+                data: [45, 77, 89],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }],
+           
+        },
+        options: {
+        rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI
+        }
     });
   }
 }
