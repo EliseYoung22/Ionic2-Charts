@@ -6,12 +6,16 @@
     <button [navPush]="D3Page">Go To D3 Pie</button>
     <button [navPush]="HeatmapPage">HeatMap</button>
     <button [navPush]="StatsPage">Stats</button>
-
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  
+  <ion-card>
+    <ion-card-header *ngFor="let user of users">
+      <ion-badge> {{user.id}} </ion-badge>
+      <ion-badge> {{user.login}} </ion-badge>
+    </ion-card-header>
+  </ion-card>
   <ion-card>
     <ion-card-header>
       Bar
