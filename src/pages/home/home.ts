@@ -23,91 +23,47 @@ export class HomePage {
     polarAreaChart: any;
     radarChart: any;
     halfdoughnutChart: any;
-
+    test: any;
+    userIds: any;
+   
     @ViewChild('barCanvas') barCanvas;
     @ViewChild('doughnutCanvas') doughnutCanvas;
     @ViewChild('lineCanvas')lineCanvas;
     @ViewChild('polarAreaCanvas')polarAreaCanvas;
     @ViewChild('radarCanvas')radarCanvas;
     @ViewChild('halfdoughnutCanvas')halfdoughnutCanvas;
+
   
     getUsers() {
         this.githubServiceProvider.getUsers()
         .then(data => {
         this.users = data;
-        console.log(this.users); 
+        this.test = data[12].id;
+        this.userIds = [];
+        for (var i = 0; i < 3; i++) {
+            this.userIds.push(data[1].id);
+        }
+        console.log(this.userIds);
+
+        console.log(this.users);
+        console.log(this.test); 
+        console.log(typeof(this.test))
+        
+        // this.getBarChart(userIds)
         });
     }
     
     constructor(private githubServiceProvider: GithubServiceProvider, navCtrl: NavController) {  
-        this.getUsers();
+    }
+    
+    ionViewWillEnter(){
+         this.getUsers();
     }
 
     ionViewDidLoad() {
-        this.barChart = new Chart(this.barCanvas.nativeElement, {
-          type: 'bar',
-          data: {
-            labels: ["Jan", "Feb", "Mar", "Apr", "Jun", "Jul"],
-                    datasets: [{
-                        label: '# of Daily Step Goals Achieved',
-                        data: [22, 19, 26, 20, 28, 1],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255,99,132,1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }],
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero:true
-                            }
-                        }]
-                    }
-                }
-     
-          }
-        });
+        this.barChart = this.getBarChart();
 
-        this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-          type: 'doughnut',
-            data: {
-                labels: ["Discover", "Share", "Act"],
-                datasets: [{
-                    label: '%',
-                    data: [45, 77, 89],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.4)',
-                        'rgba(54, 162, 235, 0.4)',
-                        'rgba(255, 206, 86, 0.4)',
-                        'rgba(75, 192, 192, 0.4)',
-                        'rgba(153, 102, 255, 0.4)',
-                        'rgba(255, 159, 64, 0.4)'
-                    ],
-                    hoverBackgroundColor: [
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56",
-                        "#FF6384",
-                        "#36A2EB",
-                        "#FFCE56"
-                    ]
-                }]
-            }
-        });
+        this.doughnutChart = this.getDoughnutChart();
  
         this.lineChart = new Chart(this.lineCanvas.nativeElement, {
             type: 'line',
@@ -227,12 +183,11 @@ export class HomePage {
                     datasets: [{
                         label:'Others',
                         lineTension: 0.3,
-                        data: this.users,
+                        data: [ 12, 13],
                         backgroundColor: [
                             'rgba(255, 99, 132, 0.4)',
                             'rgba(255, 99, 132, 0.4)',
-                            'rgba(255, 99, 132, 0.4)',
-    
+                            'rgba(255, 99, 132, 0.4)',    
                         ],
                         hoverBackgroundColor: [
                             "#FF6384",
@@ -243,7 +198,7 @@ export class HomePage {
                     {
                         label: 'You',
                         lineTension: 0.3,
-                        data: [90, 78, 81],
+                        data: this.test,
                         backgroundColor: [
                             'rgba(54, 162, 235, 0.2)',
                             'rgba(54, 162, 235, 0.2)',
@@ -252,8 +207,7 @@ export class HomePage {
                         hoverBackgroundColor: [
                             "#36A2EB",
                             "#36A2EB",
-                            "#36A2EB",
-            
+                            "#36A2EB",           
                         ]
                     }], 
                 },
@@ -297,6 +251,79 @@ export class HomePage {
             circumference: 1 * Math.PI
             }
         });
+    }
+
+    getChart(context, chartType, data, options?) {
+        return new Chart(context, {
+          type: chartType,
+          data: data,
+          options: options
+        });
+    }
+
+    getBarChart(){
+        let data = {
+            labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+            datasets: [{
+            label: '# of Daily Step Goals Achieved',
+            data: [this.userIds, 4, 8],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 206, 86, 0.2)',
+              'rgba(75, 192, 192, 0.2)',
+              'rgba(153, 102, 255, 0.2)',
+              'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+              'rgba(255,99,132,1)',
+              'rgba(54, 162, 235, 1)',
+              'rgba(255, 206, 86, 1)',
+              'rgba(75, 192, 192, 1)',
+              'rgba(153, 102, 255, 1)',
+              'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+          }]
+        };
+
+        let options = {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }]
+          }
+        }
+        return this.getChart(this.barCanvas.nativeElement, "bar", data, options);
+    }
+
+    getDoughnutChart(){
+        let data = {
+        labels: ["Discover", "Share", "Act"],
+            datasets: [{
+                label: '%',
+                data: [45, 77, 89],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.4)',
+                    'rgba(54, 162, 235, 0.4)',
+                    'rgba(255, 206, 86, 0.4)',
+                    'rgba(75, 192, 192, 0.4)',
+                    'rgba(153, 102, 255, 0.4)',
+                    'rgba(255, 159, 64, 0.4)'
+                ],
+                hoverBackgroundColor: [
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56",
+                    "#FF6384",
+                    "#36A2EB",
+                    "#FFCE56"
+                ]
+            }]
+        }
+        return this.getChart(this.doughnutCanvas.nativeElement, "doughnut", data);
     }
 }
     
