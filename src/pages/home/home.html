@@ -11,8 +11,9 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-card-header  *ngFor="let users of user">
-      <ion-badge> {{users.id}} </ion-badge>
+    <ion-card-header *ngFor="let user of users">
+      <ion-badge> {{user.id}} </ion-badge>
+      <ion-badge> {{user.login}} </ion-badge>
     </ion-card-header>
   </ion-card>
   <ion-card>

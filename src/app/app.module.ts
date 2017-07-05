@@ -15,8 +15,6 @@ import { ChartModule } from 'angular2-highcharts';
 import * as highcharts from 'Highcharts';
 import { GithubServiceProvider } from '../providers/github-service/github-service';
 
-
-
 @NgModule({
   declarations: [
     MyApp,
