@@ -4,6 +4,8 @@ import { Chart } from 'chart.js';
 import {D3Page} from '../d3/d3';
 import {HeatmapPage} from '../heatmap/heatmap';
 import {StatsPage} from '../stats/stats';
+import {HighchartPage} from '../highchart/highchart';
+
 
 import { GithubServiceProvider } from '../../providers/github-service/github-service';
 
@@ -16,6 +18,7 @@ export class HomePage {
     D3Page = D3Page;
     HeatmapPage = HeatmapPage;
     StatsPage = StatsPage;
+    HighchartPage = HighchartPage;
     users: any;
     barChart: any;
     doughnutChart: any;

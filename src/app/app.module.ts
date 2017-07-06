@@ -10,9 +10,11 @@ import { HomePage } from '../pages/home/home';
 import { D3Page } from '../pages/d3/d3';
 import { HeatmapPage } from '../pages/heatmap/heatmap';
 import { StatsPage } from '../pages/stats/stats';
+import { HighchartPage } from '../pages/highchart/highchart';
+
 
 import { ChartModule } from 'angular2-highcharts';
-import * as Highcharts from 'Highcharts';
+// import * as Highcharts from 'Highcharts';
 import { GithubServiceProvider } from '../providers/github-service/github-service';
 
 declare var require: any;
@@ -24,6 +26,7 @@ declare var require: any;
     D3Page,
     HeatmapPage,
     StatsPage,
+    HighchartPage
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ declare var require: any;
     D3Page,
     HeatmapPage,
     StatsPage,
+    HighchartPage
   ],
   providers: [
     StatusBar,
