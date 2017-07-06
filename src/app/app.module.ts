@@ -12,8 +12,10 @@ import { HeatmapPage } from '../pages/heatmap/heatmap';
 import { StatsPage } from '../pages/stats/stats';
 
 import { ChartModule } from 'angular2-highcharts';
-import * as highcharts from 'Highcharts';
+import * as Highcharts from 'Highcharts';
 import { GithubServiceProvider } from '../providers/github-service/github-service';
+
+declare var require: any;
 
 @NgModule({
   declarations: [
@@ -25,7 +27,12 @@ import { GithubServiceProvider } from '../providers/github-service/github-servic
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp), ChartModule.forRoot(highcharts), HttpModule
+    IonicModule.forRoot(MyApp), 
+    ChartModule.forRoot(
+    require('Highcharts'),
+    require('../../node_modules/highcharts/highcharts-more.js'),require('highcharts/modules/exporting'),
+    ),
+     HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
